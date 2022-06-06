@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Estudiante } from './../models/estudiante';
 import { EstudianteService } from '../services/estudiante.service';
 import { NavController, LoadingController, AlertController } from '@ionic/angular';
@@ -7,15 +7,15 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {AuthService} from '../services/auth.service'
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-tab4',
+  templateUrl: './tab4.page.html',
+  styleUrls: ['./tab4.page.scss'],
 })
-export class Tab2Page {
+export class Tab4Page implements OnInit {
 
   public students: Estudiante[];
   public student: String;
-  
+
   constructor(
     private service:EstudianteService, 
     public alertCtrl: AlertController, 
@@ -31,6 +31,9 @@ export class Tab2Page {
       })
     });
     this.student = "todos"
+  }
+
+  ngOnInit() {
   }
 
   showAlert(curp,edad) {
@@ -61,5 +64,5 @@ export class Tab2Page {
     this.afAuth.signOut();
     this.router.navigateByUrl('/login');
   }
-
+  
 }

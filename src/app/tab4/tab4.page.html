@@ -14,7 +14,7 @@
           <ion-icon name="checkmark"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-      <ion-item tappable (click)="detail(student)">
+      <ion-item *ngIf="!student.active" tappable (click)="detail(student)">
         <ion-label>
           <h2>
             <strong>{{student.name}}</strong>
@@ -28,10 +28,10 @@
           <h3>{{student.controlnumber}}</h3>
         </ion-label>
       </ion-item>
-      <ion-button (click)="showAlert(student.curp,student.age)" shape="round" color="tertiary" fill="clear" class="ion-float-right">
+      <ion-button *ngIf="!student.active" (click)="showAlert(student.curp,student.age)" shape="round" color="tertiary" fill="clear" class="ion-float-right">
         Más Información..
       </ion-button>
-      <ion-item-options side="end">
+      <ion-item-options side="end" *ngIf="!student.active">
         <ion-item-option color="danger" (click)="edit(student)">
           <ion-icon name="close"></ion-icon>
         </ion-item-option>
